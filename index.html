@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Arman Khan | Jr. Penetration Tester & Security Researcher</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Inter & JetBrains Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              green: '#10b981',
+              accent: '#06b6d4',
+              dark: '#0a0f1d',
+              card: '#111827',
+              border: '#1f2937'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+
+    /* Print Styles for CV Download */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-cv, #printable-cv * {
+        visibility: visible;
+      }
+      #printable-cv {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 20px !important;
+        box-shadow: none !important;
+        border: none !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Subtle Cyber Terminal Glow */
+    .glow-effect {
+      box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
+    }
+    .glow-effect:hover {
+      box-shadow: 0 0 35px -2px rgba(16, 185, 129, 0.3);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-[#080d18] dark:text-slate-200 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-[#080d18]/80 border-b border-slate-200 dark:border-slate-800/80 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2 text-lg font-bold font-mono tracking-tight text-slate-900 dark:text-white">
+        <span class="text-emerald-500">&lt;</span>
+        <span>Arman</span>
+        <span class="text-emerald-500">.Pentest /&gt;</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6 font-medium text-sm text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">About</a>
+        <a href="#cv" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Curriculum Vitae</a>
+        <a href="#skills" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Skills & Tools</a>
+        <a href="#projects" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right Controls: Mode Switch & CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Dark/Light Mode Toggle Button -->
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-emerald-500 dark:hover:text-emerald-400 transition-all">
+          <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-base"></i>
+          <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden text-base"></i>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider text-white bg-emerald-600 hover:bg-emerald-500 shadow-md shadow-emerald-600/20 transition-all">
+          Hire Me
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0a0f1d] px-4 pt-2 pb-4 space-y-3">
+      <a href="#about" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-emerald-500">About</a>
+      <a href="#cv" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-emerald-500">Curriculum Vitae</a>
+      <a href="#skills" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-emerald-500">Skills & Tools</a>
+      <a href="#projects" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-emerald-500">Projects</a>
+      <a href="#contact" class="block py-2 text-slate-600 dark:text-slate-300 hover:text-emerald-500">Contact</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <section class="relative py-16 md:py-24 overflow-hidden border-b border-slate-200 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Text Content -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Available for Security Assessments & Pentesting
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+              Md Arman Khan
+            </h1>
+
+            <p class="text-lg sm:text-xl font-medium font-mono text-emerald-600 dark:text-emerald-400">
+              Jr. Penetration Tester | Security Researcher
+            </p>
+
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed">
+              Specialized in <strong class="text-slate-800 dark:text-slate-200">Web Application Security</strong>, <strong class="text-slate-800 dark:text-slate-200">API Pentesting</strong>, and <strong class="text-slate-800 dark:text-slate-200">Network Security Audit</strong>. Dedicated to identifying vulnerabilities and protecting digital assets before adversaries exploit them.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <a href="#cv" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-lg shadow-emerald-600/25 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-file-invoice"></i> View Interactive CV
+              </a>
+              <a href="#contact" class="px-6 py-3 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold border border-slate-300 dark:border-slate-700 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Contact Me
+              </a>
+            </div>
+
+            <!-- Quick Contacts / Social Badges -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-5 pt-4 text-slate-500 dark:text-slate-400 text-sm">
+              <a href="mailto:mailforpentest.arman@gmail.com" class="hover:text-emerald-500 transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-envelope text-emerald-500"></i> mailforpentest.arman@gmail.com
+              </a>
+              <a href="https://www.linkedin.com/in/md-arman-khan-pentester" target="_blank" rel="noopener" class="hover:text-emerald-500 transition-colors flex items-center gap-2">
+                <i class="fa-brands fa-linkedin text-emerald-500"></i> LinkedIn Profile
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Cyber Profile Card -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 shadow-xl glow-effect">
+              <!-- Cyber Badge -->
+              <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-200 dark:border-slate-800 font-mono text-xs">
+                <span class="text-slate-400">STATUS: ACTIVE_PENTESTER</span>
+                <span class="text-emerald-500 flex items-center gap-1.5"><i class="fa-solid fa-shield-halved"></i> Byte Capsule</span>
+              </div>
+
+              <!-- Profile Details Container -->
+              <div class="text-center space-y-4">
+                <div class="relative inline-block">
+                  <div class="w-32 h-32 mx-auto rounded-full p-1 bg-gradient-to-tr from-emerald-500 to-cyan-500">
+                    <img src="profile.jpg" alt="Md Arman Khan Profile" class="w-full h-full object-cover rounded-full bg-slate-900" />
+                  </div>
+                  <span class="absolute bottom-1 right-2 w-5 h-5 rounded-full bg-emerald-500 border-4 border-white dark:border-slate-900"></span>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900 dark:text-white">Md Arman Khan</h3>
+                  <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1"><i class="fa-solid fa-location-dot text-emerald-500 mr-1"></i> Rangpur Division, Bangladesh</p>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="grid grid-cols-2 gap-3 text-left pt-2 font-mono text-xs">
+                  <div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                    <div class="text-slate-400">Primary Domain</div>
+                    <div class="font-bold text-emerald-600 dark:text-emerald-400 mt-1">Web & API Security</div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                    <div class="text-slate-400">Affiliation</div>
+                    <div class="font-bold text-slate-800 dark:text-slate-200 mt-1">Byte Capsule</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-16 bg-white dark:bg-[#0a0f1d] border-b border-slate-200 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Overview</h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">About My Security Journey</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-base">
+            Passionate security researcher focused on identifying vulnerabilities, analyzing risk factors, and building secure digital infrastructure.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-bug"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Web Application Security</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              In-depth assessments based on OWASP Top 10 guidelines including XSS, SQLi, CSRF, IDOR, and authentication bypass flaws.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">API & Network Pentesting</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Auditing RESTful endpoints, authorization controls, rate limiting, and network infrastructure port security.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 transition-all">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-microscope"></i>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Security Research</h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Continuous research on threat vectors, automated reconnaissance workflow optimization, and actionable vulnerability reporting.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cv" class="py-16 bg-slate-50 dark:bg-[#080d18] border-b border-slate-200 dark:border-slate-800/60">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8 no-print">
+          <div>
+            <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Curriculum Vitae</h2>
+            <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">Professional Resume</h3>
+          </div>
+          
+          <!-- Download / Print CV Button -->
+          <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-sm shadow-md transition-all flex items-center gap-2">
+            <i class="fa-solid fa-print"></i> Download / Print CV (PDF)
+          </button>
+        </div>
+
+        <!-- PRINTABLE CV BOX -->
+        <div id="printable-cv" class="p-8 sm:p-12 rounded-2xl bg-white dark:bg-[#0d1424] border border-slate-200 dark:border-slate-800 shadow-xl space-y-8">
+          
+          <!-- CV Header -->
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-6 flex flex-col md:flex-row justify-between gap-4">
+            <div>
+              <h1 class="text-3xl font-extrabold text-slate-900 dark:text-white">Md Arman Khan</h1>
+              <p class="text-lg font-mono text-emerald-600 dark:text-emerald-400 font-semibold mt-1">Jr. Penetration Tester</p>
+              <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Web | API | Network Security Research</p>
+            </div>
+            <div class="text-xs font-mono text-slate-600 dark:text-slate-300 space-y-1">
+              <p><i class="fa-solid fa-envelope text-emerald-500 w-4"></i> mailforpentest.arman@gmail.com</p>
+              <p><i class="fa-solid fa-phone text-emerald-500 w-4"></i> +880 1973488251</p>
+              <p><i class="fa-solid fa-paper-plane text-emerald-500 w-4"></i> Telegram: arman.khan.pentest</p>
+              <p><i class="fa-solid fa-location-dot text-emerald-500 w-4"></i> Rangpur Division, Bangladesh</p>
+            </div>
+          </div>
+
+          <!-- Professional Summary -->
+          <div>
+            <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2 border-b border-slate-200 dark:border-slate-800 pb-1">Professional Summary</h4>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Enthusiastic Cyber Security Specialist with practical experience as a Jr. Penetration Tester at Byte Capsule. Proven knowledge in identifying web application vulnerabilities, conducting API security assessments, and evaluating network resilience. Adept in using industry-standard tools like Burp Suite, Nmap, Metasploit, and custom automation scripts.
+            </p>
+          </div>
+
+          <!-- Work Experience -->
+          <div>
+            <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 border-b border-slate-200 dark:border-slate-800 pb-1">Work Experience</h4>
+            
+            <div class="space-y-4">
+              <div class="relative pl-4 border-l-2 border-emerald-500">
+                <div class="flex flex-wrap justify-between items-baseline">
+                  <h5 class="text-base font-bold text-slate-900 dark:text-white">Jr. Penetration Tester</h5>
+                  <span class="text-xs font-mono text-slate-500">Present</span>
+                </div>
+                <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-1">Byte Capsule (Academic Industrial Attachment)</p>
+                <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                  <li>Performed web vulnerability assessments targeting OWASP Top 10 security risks.</li>
+                  <li>Assisted in conducting security audits and API testing for internal environments.</li>
+                  <li>Drafted technical report summaries with actionable remediation guidance.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div>
+            <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 border-b border-slate-200 dark:border-slate-800 pb-1">Education</h4>
+            
+            <div class="relative pl-4 border-l-2 border-emerald-500">
+              <h5 class="text-base font-bold text-slate-900 dark:text-white">Academic Qualification</h5>
+              <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Dhantola R.U. School and College</p>
+              <p class="text-xs text-slate-500 mt-1">Rangpur Division, Bangladesh</p>
+            </div>
+          </div>
+
+          <!-- Core Competencies & Skills -->
+          <div>
+            <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 border-b border-slate-200 dark:border-slate-800 pb-1">Technical Skills & Toolset</h4>
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Web Pentesting</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">API Security</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Network Security</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">OWASP Top 10</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Burp Suite</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Nmap</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Metasploit</span>
+              <span class="px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700">Linux / Bash</span>
+            </div>
+          </div>
+
+          <!-- Training & Certifications -->
+          <div>
+            <h4 class="text-sm font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2 border-b border-slate-200 dark:border-slate-800 pb-1">Certifications & Specialized Training</h4>
+            <ul class="list-disc list-inside text-xs text-slate-600 dark:text-slate-300 space-y-1">
+              <li>Grameenphone Academy: Specialized Cybersecurity & AI Fundamentals</li>
+              <li>Practical Penetration Testing & Vulnerability Assessment Labs</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-16 bg-white dark:bg-[#0a0f1d] border-b border-slate-200 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Capabilities</h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">Technical Arsenal & Skills</h3>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-spider text-2xl text-emerald-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Burp Suite</div>
+              <div class="text-xs text-slate-500">Web App Proxy</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-satellite-dish text-2xl text-cyan-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Nmap</div>
+              <div class="text-xs text-slate-500">Network Recon</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-terminal text-2xl text-emerald-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Linux CLI</div>
+              <div class="text-xs text-slate-500">Kali / Bash Scripting</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-shield-virus text-2xl text-cyan-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">OWASP Top 10</div>
+              <div class="text-xs text-slate-500">Vulnerability Audit</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-code text-2xl text-emerald-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">API Pentesting</div>
+              <div class="text-xs text-slate-500">REST & Auth Audit</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-[#10b981] fa-skull-crossbones text-2xl text-cyan-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Metasploit</div>
+              <div class="text-xs text-slate-500">Exploitation Framework</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-lock text-2xl text-emerald-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Network Auditing</div>
+              <div class="text-xs text-slate-500">Port & Service Security</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-3">
+            <i class="fa-solid fa-file-contract text-2xl text-cyan-500"></i>
+            <div>
+              <div class="font-bold text-sm text-slate-900 dark:text-white">Report Writing</div>
+              <div class="text-xs text-slate-500">Remediation Steps</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-slate-50 dark:bg-[#080d18] border-b border-slate-200 dark:border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Portfolio</h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">Featured Security Projects</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Project Card 1 -->
+          <div class="rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-emerald-500">SECURITY AUDIT</span>
+                <i class="fa-solid fa-file-shield text-slate-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">Web Vulnerability Assessment Report</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                Comprehensive security evaluation of a target web application using Burp Suite & manual testing to identify OWASP Top 10 vulnerabilities.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">XSS</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">SQLi</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Burp Suite</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-cyan-500">API PENTEST</span>
+                <i class="fa-solid fa-key text-slate-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">REST API Security Benchmark</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                Testing endpoints for Broken Object Level Authorization (BOLA), rate-limiting bypass, and insecure authentication mechanisms.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">REST API</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Postman</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">OAuth</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+            <div class="p-6 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono text-emerald-500">RECON & SCRIPTS</span>
+                <i class="fa-solid fa-code text-slate-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 dark:text-white">Automated Reconnaissance Workflow</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                Custom Bash and Nmap script workflows to automate subdomain enumeration, port scanning, and service identification during engagements.
+              </p>
+              <div class="flex flex-wrap gap-1.5 pt-2 font-mono text-[10px]">
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Nmap</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Bash</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">Linux</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-white dark:bg-[#0a0f1d]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">Get In Touch</h2>
+          <h3 class="text-3xl font-extrabold text-slate-900 dark:text-white">Direct Communication Channel</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Have a security query, penetration testing requirement, or recruitment opportunity? Send a message directly.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+          
+          <!-- Contact Details Column -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <a href="mailto:mailforpentest.arman@gmail.com" class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-4 hover:border-emerald-500 transition-all block">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">Email Address</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white">mailforpentest.arman@gmail.com</div>
+              </div>
+            </a>
+
+            <a href="https://t.me/" target="_blank" class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-4 hover:border-emerald-500 transition-all block">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-lg">
+                <i class="fa-brands fa-telegram"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">Telegram</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white">arman.khan.pentest</div>
+              </div>
+            </a>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-500 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">Phone</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white">01973488251</div>
+              </div>
+            </div>
+
+            <a href="https://www.linkedin.com/in/md-arman-khan-pentester" target="_blank" class="p-4 rounded-xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800 flex items-center gap-4 hover:border-emerald-500 transition-all block">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center text-lg">
+                <i class="fa-brands fa-linkedin"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">LinkedIn</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white">/in/md-arman-khan-pentester</div>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Interactive Direct Mail Form -->
+          <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-slate-50 dark:bg-[#111827] border border-slate-200 dark:border-slate-800">
+            
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="name" class="block text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Your Name</label>
+                <input type="text" id="name" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500" placeholder="e.g. John Doe">
+              </div>
+
+              <div>
+                <label for="email" class="block text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Your Email</label>
+                <input type="email" id="email" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500" placeholder="e.g. john@example.com">
+              </div>
+
+              <div>
+                <label for="subject" class="block text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Subject</label>
+                <input type="text" id="subject" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500" placeholder="Penetration Testing Request">
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-mono text-slate-600 dark:text-slate-400 mb-1">Message</label>
+                <textarea id="message" rows="4" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-emerald-500" placeholder="Describe your requirement..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Send Email
+              </button>
+            </form>
+
+            <!-- Status Message Alert Box -->
+            <div id="form-status" class="hidden mt-4 p-3 rounded-xl text-xs font-mono text-center"></div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-[#080d18] py-8 text-center text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Md Arman Khan. All Rights Reserved. Built for Web & GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Switch Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Default to dark mode or check localStorage
+    if (localStorage.getItem('color-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+      lightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      darkIcon.classList.remove('hidden');
+    }
+
+    themeToggleBtn.addEventListener('click', function() {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Contact Form Mailto Handler
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const mailtoUrl = `mailto:mailforpentest.arman@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+
+      // Show Status
+      formStatus.className = "mt-4 p-3 rounded-xl text-xs font-mono text-center bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20";
+      formStatus.innerHTML = "<i class='fa-solid fa-check-circle mr-1'></i> Opening email client... If it doesn't open automatically, please send manually to mailforpentest.arman@gmail.com";
+      formStatus.classList.remove('hidden');
+
+      // Trigger mailto link
+      window.location.href = mailtoUrl;
+    });
+  </script>
+</body>
+</html>
