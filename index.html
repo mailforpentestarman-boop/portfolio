@@ -685,6 +685,28 @@
       // Trigger mailto link
       window.location.href = mailtoUrl;
     });
-  </script>
+  </script> 
+    <script>
+  document.querySelectorAll('.glass-box').forEach(card => {
+      card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width * 100;
+          const y = (e.clientY - rect.top) / rect.height * 100;
+
+          card.style.transform = `scale(1.03) translateZ(10px)`;
+          card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.1), transparent)`;
+          card.style.boxShadow = `
+              0 10px 30px -10px rgba(0,0,0,0.5), 
+              ${x/2}px ${y/2}px 10px -5px rgba(255,255,255,0.05)
+          `;
+      });
+
+      card.addEventListener('mouseleave', () => {
+          card.style.transform = `scale(1) translateZ(0)`;
+          card.style.background = `rgba(255,255,255,0.05)`;
+          card.style.boxShadow = `0 10px 30px -10px rgba(0,0,0,0.5)`;
+      });
+  });
+</script>
 </body>
 </html>
